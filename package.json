@@ -10,12 +10,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "axios": "^0.16.2",
-    "lodash": "^4.17.4",
+    "axios": "^0.25.0",
+    "lodash": "^4.17.21",
     "ovrui": "~1.4.0",
-    "react": "~15.4.1",
-    "react-dom": "^16.0.0",
-    "react-native": "~0.42.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-native": "^0.67.2",
     "react-native-axios": "^0.17.1",
     "react-native-router-flux": "^4.0.0-beta.22",
     "react-redux": "^5.0.6",
@@ -23,7 +23,7 @@
     "react-vr-web": "~1.4.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "three": "^0.80.1"
+    "three": "^0.137.5"
   },
   "devDependencies": {
     "babel-jest": "^19.0.0",
