@@ -7,7 +7,9 @@
     "bundle": "node node_modules/react-vr/scripts/bundle.js",
     "open": "node -e \"require('xopen')('http://localhost:8081/vr/')\"",
     "devtools": "react-devtools",
-    "test": "jest"
+    "test": "jest",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -23,7 +25,8 @@
     "react-vr-web": "~1.4.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "three": "^0.80.1"
+    "three": "^0.80.1",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "babel-jest": "^19.0.0",
@@ -36,5 +39,6 @@
   },
   "jest": {
     "preset": "react-vr"
-  }
+  },
+  "snyk": true
 }
