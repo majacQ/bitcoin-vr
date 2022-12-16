@@ -37,6 +37,13 @@ export const addNewTransaction = (newTransaction) => ({
  */
 export function loadTransactionsIntoState() {
   return function thunk(dispatch) {
+  <<<<<<< perf-enhancements
+    let socket = io.connect('http://socket.coincap.io', { jsonp: false })
+    socket.on('trades', (tradeMsg) => {
+      if (tradeMsg.coin == 'BTC') dispatch(addNewTransaction(tradeMsg.trade.data))
+      // dispatch(addNewTransaction(tradeMsg.trade.data))
+    })
+  =======
     let blockchainWS = new WebSocket('wss://ws.blockchain.info/inv')
     blockchainWS.onopen = () => {
       blockchainWS.send(JSON.stringify({ "op": "unconfirmed_sub" }));
@@ -66,6 +73,7 @@ function generateCoordinates(radius) {
   return {
     x: radius * Math.sin(randomAngle),
     z: radius * Math.cos(randomAngle)
+  >>>>>>> vr-button-#63
   }
 }
 
