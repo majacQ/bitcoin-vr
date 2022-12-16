@@ -7,7 +7,7 @@ import {
   asset,
   Text
 } from 'react-vr';
-import { DataReadout } from './DataReadout'
+import { HoverBox } from './HoverBox'
 
 class HotAirBalloon extends React.Component {
   constructor(props) {
@@ -28,8 +28,8 @@ class HotAirBalloon extends React.Component {
     Animated.timing(
       this.state.y,
       {
-        toValue: 100,
-        duration: 100000
+        toValue: 1000,
+        duration: 40000
       }
     ).start()
   }
@@ -41,7 +41,8 @@ class HotAirBalloon extends React.Component {
   }
 
   render() {
-    const { x, z, volume, color, scale } = this.props.transaction;
+    const { x, z, color, modelColor, scale, radial } = this.props.transaction.display;
+    const { transactionSize } = this.props.transaction
     const base = 5;
 
     return (
@@ -57,12 +58,13 @@ class HotAirBalloon extends React.Component {
         {
           <Model
             lit
-            texture={asset('gold_texture.jpg')}
+            // texture={asset('gold_texture.jpg')}
             source={{
               obj: asset('Air_Balloon.obj'),
             }}
-            color={color}
+
             style={{
+              color: modelColor,
               transform: [
                 { scale: scale },
                 { translate: [0, 0, 0] }
@@ -70,7 +72,7 @@ class HotAirBalloon extends React.Component {
             }}
           >
             <Text>
-              {volume}
+              {transactionSize}
             </Text>
           </Model>
         }
@@ -88,12 +90,13 @@ class HotAirBalloon extends React.Component {
           }}
         />
         {
-          this.state.readoutVisible && volume && <DataReadout readout={{
-            boxSize: base * scale || 30,
+          this.state.readoutVisible && transactionSize && <HoverBox readout={{
+            radial,
+            scale,
             x,
             y: this.state.y,
             z,
-            orig: this.props.transaction
+            transaction: this.props.transaction
           }} />
         }
       </Animated.View>)

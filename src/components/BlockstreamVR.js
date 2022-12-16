@@ -2,25 +2,19 @@ import React, { Component } from 'react';
 import {
   asset,
   Pano,
-  Text,
   View,
-  Box,
-  Animated,
   Scene,
-  Plane,
-  AmbientLight,
   PointLight
 } from 'react-vr';
-import io from 'socket.io-client'
+
 // React-redux and store methods
 import { connect } from 'react-redux'
-import { 
-  loadDatapointsIntoState, 
-  loadAxisIntoState, 
-  loadTransactionsIntoState 
+import {
+  loadTransactionsIntoState
 } from '../store';
 // Common components
-import { TransactionObj, Cube, MovingCube } from './common';
+import { TransactionObj, PanoLoader } from './common';
+import { InfoPanel } from './common/InfoPanel.js'
 
 class BlockstreamVR extends Component {
   constructor (props) {
@@ -28,22 +22,19 @@ class BlockstreamVR extends Component {
   }
 
   componentDidMount () {
-    // TODO: datapoints below is just a scaffold to load mock data in
-    // TODO: we should move it into a redux thunk for datapoints
-    this.props.loadTransactionsIntoState()
+    this.props.loadTransactionsIntoState();
   }
 
   render() {
     return (
       <Scene style= {{
         transform: [
-          {translate: [0, 0, 0]},
-          //{rotateZ: 45}
+          {translate: [0, 5, 0]}
         ]
       }}>
       <View>
-        <Pano source={asset('lake-large.jpg')}/>
-        <PointLight 
+        <PanoLoader />
+        <PointLight
           style={{
             color: 'white',
             transform: [
@@ -51,30 +42,20 @@ class BlockstreamVR extends Component {
             ]
           }}
         />
-        <View>
+        <InfoPanel />
+        <View style={{ position: 'absolute' }}>
           {
-            this.props.blockchainTransactions 
+            this.props.blockchainTransactions
             && this.props.blockchainTransactions.map( (transaction, index) => {
               return (
-                <TransactionObj 
-                  key={transaction.key} 
-                  transaction={{...transaction}} 
+                <TransactionObj
+                  key={transaction.key}
+                  transaction={{...transaction}}
                 />
               );
             })
-          } 
+          }
         </View>
-        <Plane
-          dimWidth={30}
-          dimHeight={10}
-          style={{
-            transform: [
-              {translate: [5, -20, -30]},
-              {rotateX: -40}
-            ],
-            color: 'green'
-          }}
-        />
       </View>
     </Scene>
   )
@@ -95,5 +76,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(BlockstreamVR)
+export default connect(mapStateToProps, mapDispatchToProps)(BlockstreamVR);
