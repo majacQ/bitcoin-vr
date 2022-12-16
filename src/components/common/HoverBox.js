@@ -4,7 +4,8 @@ import {
   Animated,
   Text,
   View,
-  StyleSheet
+  StyleSheet,
+  VrButton
 } from 'react-vr';
 
 // Layout props
@@ -18,33 +19,86 @@ class HoverBox extends React.Component {
 
   render() {
     const { exchangeRate, transactionSize, transactionUSD, hash } = this.props.readout.transaction;
-    
+    const { radial, scale } = this.props.readout
+
     return (
       <View
         billboarding={'on'}
-        style={styles.container}
+        style={{
+          backgroundColor: '#00000080',
+          position: 'absolute',
+          height: radial / 3,
+          width: radial / 3,
+          flexDirection: 'column',
+          transform: [
+            { translate: [-radial / 6, -radial / 30, 0] },
+            { scale: 4 }
+          ],
+          borderRadius: 1,
+          justifyContent: 'flex-start',
+        }}
       >
         <Text
-          style={styles.transactionVolume}
+          style={{
+            flex: 2,
+            fontSize: radial / 11,
+            color: 'white',
+            width: radial / 3,
+            textAlign: 'center',
+            fontWeight: '400'
+          }}
         >
           {
-            `${transactionSize.toFixed(3)}\n`
+            `${transactionSize.toFixed(2)}\n`
           }
         </Text>
         <Text
-          style={styles.transactionValue}
+          style={{
+            flex: 1,
+            fontSize: radial / 27,
+            color: 'white',
+            width: radial / 3,
+            textAlign: 'center'
+          }}
         >
           {
-            `USD ${transactionUSD}\n`
+            // See https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+            `USD ${transactionUSD.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}\n`  
           }
         </Text>
-        <Text
-          style={styles.transactionHash}
+        <VrButton
+          style={{
+            flex: 1,
+            width: radial/3,
+            alignItems: 'center',
+          }}
         >
-          {
-            `${hash}`
-          }
-        </Text>
+          <Text
+            style={{
+              flex: 1,
+              fontSize: radial /70,
+              color: 'white',
+              textAlign: 'center',
+              color: "yellowgreen",
+              marginLeft: radial/50,
+              marginRight: radial/50,
+              marginBottom: radial/50,
+              paddingLeft: radial/60,
+              paddingRight: radial/60,
+              paddingTop: radial/80,
+              paddingBottom: radial/80,
+              borderRadius: radial/70,
+              textAlign: 'center',
+              textAlignVertical: 'center'
+
+            }}
+          >
+            {
+              `${hash}`
+            }
+          </Text>
+        </VrButton>
+
       </View>
     )
   }
@@ -54,43 +108,5 @@ class HoverBox extends React.Component {
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#00000080',
-    position: 'absolute',
-    height: _panelHeight,
-    width: _panelWidth,
-    flexDirection: 'column',
-    transform: [
-      { translate: [-_panelWidth / 2, -_panelHeight / 10, 0] },
-      { scale: 4 }
-    ],
-    borderRadius: 1,
-    justifyContent: 'flex-start',
-  },
-  transactionVolume: {
-    flex: 2,
-    fontSize: 10,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center',
-    fontWeight: '400'
-  },
-  transactionValue: {
-    flex: 1,
-    fontSize: 4,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center'
-  },
-  transactionHash: {
-    flex: 1,
-    fontSize: 2,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center'
-  }
-})
 
 export { HoverBox };
