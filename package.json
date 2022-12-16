@@ -12,21 +12,26 @@
     "snyk-protect": "snyk-protect"
   },
   "dependencies": {
-    "axios": "^0.16.2",
-    "lodash": "^4.17.4",
-    "ovrui": "~1.4.0",
-    "react": "~15.4.1",
-    "react-dom": "^16.0.0",
-    "react-native": "~0.42.0",
+    "axios": "^0.25.0",
+    "lodash": "^4.17.21",
+    "ovrui": "^1.4.1",
+    "react": "^17.0.2",
+    "react-dom": "^16.14.0",
+    "react-native": "^0.67.1",
     "react-native-axios": "^0.17.1",
-    "react-native-router-flux": "^4.0.0-beta.22",
-    "react-redux": "^5.0.6",
+    "react-native-router-flux": "^4.3.1",
+    "react-redux": "^5.1.2",
     "react-vr": "~1.4.0",
     "react-vr-web": "~1.4.0",
     "redux": "^3.7.2",
+  <<<<<<< snyk-fix-e7a413b34fae03bbd652b20ac3192a66
     "redux-thunk": "^2.2.0",
     "three": "^0.80.1",
     "@snyk/protect": "latest"
+  =======
+    "redux-thunk": "^2.4.1",
+    "three": "^0.137.1"
+  >>>>>>> dependabot/npm_and_yarn/three-0.137.0
   },
   "devDependencies": {
     "babel-jest": "^19.0.0",
