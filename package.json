@@ -14,7 +14,11 @@
     "lodash": "^4.17.21",
     "ovrui": "^1.4.1",
     "react": "^18.1.0",
+  <<<<<<< passBuildFolder
     "react-dom": "^16.14.0",
+ =======
+    "react-dom": "^18.1.0",
+ >>>>>>> deploy-as-bitcoin-vr-#73
     "react-native": "^0.68.2",
     "react-native-axios": "^0.17.1",
     "react-native-router-flux": "^4.3.1",
