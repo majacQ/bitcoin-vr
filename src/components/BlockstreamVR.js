@@ -24,7 +24,11 @@ class BlockstreamVR extends Component {
   }
 
   componentDidMount () {
+  <<<<<<< blockchain-info
+    this.props.loadTransactionsIntoState()
+  =======
     this.props.loadTransactionsIntoState();
+  >>>>>>> infoOverlay-#17
   }
 
   render() {
