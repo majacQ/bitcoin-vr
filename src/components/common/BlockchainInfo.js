@@ -1,11 +1,8 @@
 import React from 'react';
 import {
-  Box,
-  Animated,
   Text,
   View,
   StyleSheet,
-  VrButton
 } from 'react-vr';
 
 import { connect } from 'react-redux';
@@ -14,72 +11,69 @@ import { connect } from 'react-redux';
 const _panelHeight = 30
 const _panelWidth = 60;
 
-class BlockchainInfo extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+function BlockchainInfo(props) {
 
-  render() {
-    const curCurrency = 'BTC'
-    const { largest, total, last } = this.props;
-    console.log(this.props.largest);
+  const curCurrency = 'BTC'
+  const { largest, total, last } = props;
+  const roundBTC = 3; // will round to 3 decimal places
+  const roundUSD = 2; // will round to 2 decimal places
 
-    return (
-      <View style={styles.container}>
-        <View style={styles.container_totalLargestNewest}>
-          <Text style={styles.listItem}>Total</Text>
-          <Text style={styles.listItem}>Largest</Text>
-          <Text style={styles.listItemBottom}>Newest</Text>
-        </View>
 
-        <View style={styles.container_numberValues}>
-          <Text style={styles.text_numberValues}>
-            {`${curCurrency} ${total[0].toFixed(3)}\n ${curCurrency} ${largest[0].toFixed(3)}\n ${curCurrency} ${last[0].toFixed(3)}`}
-          </Text>
-        </View>
-
-        <View style={styles.container_numberValues}>
-          <Text style={styles.text_numberValues}>
-            {`$ ${total[1].toFixed(2)}\n $ ${largest[1].toFixed(2)}\n $ ${last[1].toFixed(2)}`}
-          </Text>
-        </View>
+  return (
+    <View style={styles.container}>
+      <View style={styles.container_totalLargestNewest}>
+        <Text style={styles.listItem}>Total</Text>
+        <Text style={styles.listItem}>Largest</Text>
+        <Text style={styles.listItem}>Newest</Text>
       </View>
-    )
-  }
+
+      <View style={styles.container_numberValues}>
+        <Text style={styles.text_numberValues}>{`${curCurrency} ${formatNumber(total[0], roundBTC)}`}</Text>
+        <Text style={styles.text_numberValues}>{`${curCurrency} ${formatNumber(largest[0], roundBTC)}`}</Text>
+        <Text style={styles.text_numberValues}>{`${curCurrency} ${formatNumber(last[0], roundBTC)}`}</Text>
+      </View>
+
+      <View style={styles.container_numberValues}>
+        <Text style={styles.text_numberValues}>{`$ ${formatNumber(total[1], roundUSD)}`}</Text>
+        <Text style={styles.text_numberValues}>{`$ ${formatNumber(largest[1], roundUSD)}`}</Text>
+        <Text style={styles.text_numberValues}>{`$ ${formatNumber(last[1], roundUSD)}`}</Text>
+      </View>
+    </View>
+  )
+}
+
+function formatNumber(number, decimalPlaces) {
+  return number.toFixed(decimalPlaces).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'stretch',
-    margin: 0.02
   },
   container_totalLargestNewest: {
-      width: 0.4,
-      flexDirection: 'column',
-      padding: 0,
-      paddingRight: 0.05
+    width: 0.4,
+    flexDirection: 'column',
+    padding: 0,
+    paddingRight: 0.05,
+    margin: 0
   },
   listItem: {
     textAlign: 'right',
     padding: 0,
-    marginBottom: -0.028
-  },
-  listItemBottom: {
-    textAlign: 'right',
-    padding: 0,
-    marginTop: -0.01
+    margin: 0,
+    height: 0.12
   },
   container_numberValues: {
-    width: .8,
+    width: 0.8,
   },
   text_numberValues: {
-    textAlign: 'left'
+    textAlign: 'left',
+    height: 0.12
   }
 })
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     largest: state.blockchainTransactions.largest,
     total: state.blockchainTransactions.total,
@@ -88,3 +82,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(BlockchainInfo);
+
