@@ -9,13 +9,14 @@ import {
 
 // React-redux and store methods
 import { connect } from 'react-redux'
-import io from 'socket.io-client';
 import {
   loadTransactionsIntoState
 } from '../store';
 // Common components
 import { TransactionObj, PanoLoader } from './common';
 import { InfoPanel } from './common/InfoPanel.js'
+import { InfoTable } from './common/InfoTable.js'
+
 
 class BlockstreamVR extends Component {
   constructor (props) {
@@ -23,17 +24,22 @@ class BlockstreamVR extends Component {
   }
 
   componentDidMount () {
+  <<<<<<< blockchain-info
+    this.props.loadTransactionsIntoState()
+  =======
     this.props.loadTransactionsIntoState();
+  >>>>>>> infoOverlay-#17
   }
 
   render() {
     return (
       <Scene style= {{
         transform: [
-          {translate: [0, 0, 0]}
+          {translate: [0, 1, 0]}
         ]
       }}>
       <View>
+        <InfoTable />
         <PanoLoader />
         <PointLight
           style={{
