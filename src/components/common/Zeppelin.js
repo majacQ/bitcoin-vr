@@ -41,7 +41,7 @@ toggleReadoutVisible() {
 }
 
 render() {
-  const { x, z, color, scale, radial } = this.props.transaction.display;
+  const { x, z, color, modelColor, scale, radial } = this.props.transaction.display;
   const { transactionSize } = this.props.transaction
   const base = 5;
   return (
@@ -52,20 +52,19 @@ render() {
         transform: [
           { translate: [x, -10, z] },
           { translateY: this.state.y },
-          // { rotateY: this.state.rotation}
+          // { rotateY: this.state.rotation }
         ]
       }}>
       {
         <Model
           lit
-          texture={asset('gold_texture.jpg')}
           source={{
             obj: asset('Low-Poly_airship.obj'),
           }}
-          color={color}
           style={{
+            color: modelColor,
             transform: [
-              { scale: 0.4 },
+              { scale: scale },
               { translate: [0, 100, 0] }
             ]
           }}
@@ -91,7 +90,7 @@ render() {
       //   }}
       // />
       }
-     
+
       {
         this.state.readoutVisible && transactionSize && <HoverBox readout={{
           radial,

@@ -42,7 +42,7 @@ export function loadTransactionsIntoState() {
       blockchainWS.send(JSON.stringify({ "op": "unconfirmed_sub" }));
     }
     blockchainWS.onmessage = (msg) => {
-      // See annotated Blockchain.info Websocket API 
+      // See annotated Blockchain.info Websocket API
       // I have summarized it at https://gist.github.com/onggunhao/fcce0aac94ba73c44b59b4ff0dd6b638
       let newTransaction = JSON.parse(msg.data).x
 
@@ -62,9 +62,9 @@ export function loadTransactionsIntoState() {
 }
 
 function generateCoordinates(radius) {
-  let randomAngle = Math.random()*Math.PI*2
+  let randomAngle = Math.random() * Math.PI * 2
   return {
-    x: radius * Math.sin(randomAngle), 
+    x: radius * Math.sin(randomAngle),
     z: radius * Math.cos(randomAngle)
   }
 }
@@ -98,12 +98,14 @@ export default function (state = initialState, action) {
         case (transactionSize < 1):
           newTransaction.display.scale = 0.3; // Gives it a minimum value
           newTransaction.display.color = 'red'
+          newTransaction.display.modelColor = '#ffe5e5'
           newTransaction.display.model = 'balloon'
           newTransaction.display.radial = FIRST_RADIAL
           break;
         case (transactionSize < 10):
           newTransaction.display.scale = 0.8; // Gives it a minimum value
           newTransaction.display.color = 'green'
+          newTransaction.display.modelColor = '#e5f2e5'
           newTransaction.display.model = 'balloon'
           newTransaction.display.radial = SECOND_RADIAL
           break;
@@ -111,30 +113,35 @@ export default function (state = initialState, action) {
         case (transactionSize < 50):
           newTransaction.display.scale = 1.6
           newTransaction.display.color = 'orange'
+          newTransaction.display.modelColor = '#fff6e5'
           newTransaction.display.model = 'balloon'
           newTransaction.display.radial = THIRD_RADIAL
           break;
         case (transactionSize < 100):
-          newTransaction.display.scale = 1;
+          newTransaction.display.scale = 0.2;
           newTransaction.display.color = 'yellow'
+          newTransaction.display.modelColor = '#ffffb2'
           newTransaction.display.model = 'zeppelin'
           newTransaction.display.radial = FOURTH_RADIAL
           break;
         case (transactionSize < 1000):
-          newTransaction.display.scale = 2;
-          newTransaction.display.color = 'blue'
+          newTransaction.display.scale = 0.5;
+          newTransaction.display.color = 'grey'
+          newTransaction.display.modelColor = '#696969'
           newTransaction.display.model = 'zeppelin'
           newTransaction.display.radial = FIFTH_RADIAL
           break;
         case (1000 < transactionSize):
-          newTransaction.display.scale = 3;
-          newTransaction.display.color = 'purple'
+          newTransaction.display.scale = 1.4;
+          newTransaction.display.color = 'grey'
+          newTransaction.display.modelColor = '#696969'
           newTransaction.display.model = 'zeppelin'
           newTransaction.display.radial = SIXTH_RADIAL
           break;
         default:
           newTransaction.display.scale = 0.2 + (0.8 * transactionSize); // Gives it a minimum value
           newTransaction.display.color = 'red'
+          newTransaction.display.modelColor = '#ffe5e5'
           newTransaction.display.model = 'balloon'
           newTransaction.display.radial = FIRST_RADIAL
           break;
@@ -144,15 +151,6 @@ export default function (state = initialState, action) {
       let randomCoordinates = generateCoordinates(newTransaction.display.radial)
       newTransaction.display.x = randomCoordinates.x
       newTransaction.display.z = randomCoordinates.z
-      // let distance = Math.sqrt(Math.pow(newTransaction.display.x, 2) + Math.pow(newTransaction.display.z, 2))
-      // let randomX =  FIFTH_RADIAL * Math.sin(Math.floor(Math.random() * (360)));
-      // newTransaction.display.x = randomX
-      // let randomZ = FIFTH_RADIAL * Math.cos(Math.floor(Math.random() * (360)));
-      // newTransaction.display.z = randomZ
-      // console.log("Radial: ", newTransaction.display.radial)
-      // console.log("Coordinates: ", newTransaction.display.x, ", ", newTransaction.display.z)
-      // console.log("Distance: ", distance)
-      // console.log("Difference: ", newTransaction.display.radial - distance)
 
       //Set our counters
       const curLargest = [
