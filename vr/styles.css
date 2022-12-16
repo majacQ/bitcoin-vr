@@ -3,6 +3,8 @@
 body {
   background-color: #000;
   margin: 0px;
+  box-sizing: border-box;
+  font-family: "Arial", Arial, sans-serif;
 }
 
 #loader-wrapper {
@@ -89,9 +91,58 @@ body {
       color: #222222;
   }
 
-  #content {
-      margin: 0 auto;
-      padding-bottom: 50px;
-      width: 80%;
-      max-width: 978px;
+  #info-container{
+    width:100%;
+    min-height:100px;
+    background-color:rgba(0, 0, 0, 0.5);
+    padding: 0px;
+    z-index: 10;
+    position: absolute;
+    color: white;
+
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  #info-table {
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  h2 {
+    margin-top: 10px;
+  }
+
+  table {
+    height: 100%;
+  }
+
+  td {
+    color: white;
+    padding: 2px 4px 2px 2px;
+  }
+
+  #authors {
+    align-self: flex-end;
+    text-align: right;
+    margin-bottom: 10px;
+  }
+
+  #authors > p {
+    margin: 0px;
+  }
+  #authors a {
+    color: lightblue;
+  }
+
+  .numbers {
+    width: 120px; /* change this when screen is smaller */
+  }
+
+  .align-right {
+    text-align: right; /* change this when screen is smaller */
   }

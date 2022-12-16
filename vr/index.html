@@ -1,8 +1,31 @@
+<!DOCTYPE html>
 <html>
+  <<<<<<< prettify-app
+
+<head>
+  <title>Bitcoin-VR</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+</head>
+
+<body>
+  <link rel="stylesheet" href="styles.css">
+  <div id="loader-id">
+    <div id="loader-wrapper">
+      <h2 id="loader-text">Loading Bitcoin-VR...</h2>
+      <div id="loader"></div>
+  =======
   <head>
     <title>Blockchain-VR</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="og:title" content="Blockchain-VR" />
+    <meta property="og:description" content="Blockchain visualization using balloons and blimps in virtual reality." />
+    <meta property="og:url" content="http://blockchain-vr.herokuapp.com" />
+    <meta property="og:image" content="../static_assets/blockchain-vr.png" />
   </head>
   <body>
     <link rel="stylesheet" href="styles.css">
@@ -11,11 +34,30 @@
         <h2 id="loader-text">Loading blockchain-VR...</h2>
         <div id="loader"></div>
       </div>
+  >>>>>>> addingMetaDataForSharing-#112
     </div>
+  </div>
 
-    <script src="./client.bundle?platform=vr"></script>
-    <script src="./loader.js"></script>
-    <script src="./reactvrinit.js"></script>
+  <script src="./client.bundle?platform=vr"></script>
+  <script src="./loader.js"></script>
+  <div id="info-container" class="container-fluid">
+      <div id="title">
+        <h2>Bitcoin-VR</h2>
+      </div>
+      <div id="info-table">
 
-  </body>
+      </div>
+      <div id="authors">
+        <p>
+          Created by Daniel Ong, Robin Wilson, Jing Jia
+        </p>
+        <p>
+          <a href="https://github.com/bitcoin-vr/bitcoin-vr">https://github.com/bitcoin-vr/bitcoin-vr</a>
+        </p>
+      </div>
+  </div>
+  <script src="./reactvrinit.js"></script>
+
+</body>
+
 </html>

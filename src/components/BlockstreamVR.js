@@ -15,6 +15,8 @@ import {
 // Common components
 import { TransactionObj, PanoLoader } from './common';
 import { InfoPanel } from './common/InfoPanel.js'
+import { InfoTable } from './common/InfoTable.js'
+
 
 class BlockstreamVR extends Component {
   constructor (props) {
@@ -22,7 +24,11 @@ class BlockstreamVR extends Component {
   }
 
   componentDidMount () {
+  <<<<<<< blockchain-info
+    this.props.loadTransactionsIntoState()
+  =======
     this.props.loadTransactionsIntoState();
+  >>>>>>> infoOverlay-#17
   }
 
   render() {
@@ -33,6 +39,7 @@ class BlockstreamVR extends Component {
         ]
       }}>
       <View>
+        <InfoTable />
         <PanoLoader />
         <PointLight
           style={{
