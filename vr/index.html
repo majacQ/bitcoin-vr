@@ -1,22 +1,63 @@
+<!DOCTYPE html>
 <html>
+  <<<<<<< prettify-app
+
+<head>
+  <title>Bitcoin-VR</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+</head>
+
+<body>
+  <link rel="stylesheet" href="styles.css">
+  <div id="loader-id">
+    <div id="loader-wrapper">
+      <h2 id="loader-text">Loading Bitcoin-VR...</h2>
+      <div id="loader"></div>
+  =======
   <head>
-    <title>dataVR</title>
-    <style>body { margin: 0; }</style>
+    <title>Blockchain-VR</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="og:title" content="Blockchain-VR" />
+    <meta property="og:description" content="Blockchain visualization using balloons and blimps in virtual reality." />
+    <meta property="og:url" content="http://blockchain-vr.herokuapp.com" />
+    <meta property="og:image" content="../static_assets/blockchain-vr.png" />
   </head>
   <body>
-    <!-- When you're ready to deploy your app, update this line to point to your compiled client.bundle.js -->
-    <script src="./client.bundle?platform=vr"></script>
-    <script>
-      // Initialize the React VR application
-      ReactVR.init(
-        // When you're ready to deploy your app, update this line to point to
-        // your compiled index.bundle.js
-        '../index.vr.bundle?platform=vr&dev=true',
-        // Attach it to the body tag
-        document.body
-      );
-    </script>
-  </body>
-</html>
+    <link rel="stylesheet" href="styles.css">
+    <div id="loader-id">
+      <div id="loader-wrapper">
+        <h2 id="loader-text">Loading blockchain-VR...</h2>
+        <div id="loader"></div>
+      </div>
+  >>>>>>> addingMetaDataForSharing-#112
+    </div>
+  </div>
 
+  <script src="./client.bundle?platform=vr"></script>
+  <script src="./loader.js"></script>
+  <div id="info-container" class="container-fluid">
+      <div id="title">
+        <h2>Bitcoin-VR</h2>
+      </div>
+      <div id="info-table">
+
+      </div>
+      <div id="authors">
+        <p>
+          Created by Daniel Ong, Robin Wilson, Jing Jia
+        </p>
+        <p>
+          <a href="https://github.com/bitcoin-vr/bitcoin-vr">https://github.com/bitcoin-vr/bitcoin-vr</a>
+        </p>
+      </div>
+  </div>
+  <script src="./reactvrinit.js"></script>
+
+</body>
+
+</html>

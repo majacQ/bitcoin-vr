@@ -7,29 +7,32 @@
     "bundle": "node node_modules/react-vr/scripts/bundle.js",
     "open": "node -e \"require('xopen')('http://localhost:8081/vr/')\"",
     "devtools": "react-devtools",
-    "test": "jest",
-    "loader": "babel ./src/Converter.js | node",
-    "robinTest": "node ./src/loader/Converter.js"
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.16.2",
+  <<<<<<< blockchain-info
+    "blockchain.info": "^2.10.1",
     "d3": "^4.11.0",
+  =======
+  >>>>>>> infoOverlay-#17
     "lodash": "^4.17.4",
     "ovrui": "~1.4.0",
-    "react": "~15.4.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "react-native": "~0.42.0",
     "react-native-axios": "^0.17.1",
-    "react-native-router-flux": "^4.0.0-beta.21",
+    "react-native-router-flux": "^4.0.0-beta.24",
     "react-redux": "^5.0.6",
     "react-vr": "~1.4.0",
     "react-vr-web": "~1.4.0",
     "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "socket.io-client": "^2.0.3",
+    "simple-raycaster": "^1.0.1",
     "three": "^0.80.1"
   },
   "devDependencies": {
+    "redux-logger": "^3.0.6",
     "babel-jest": "^19.0.0",
     "babel-preset-react-native": "^1.9.1",
     "jest": "^19.0.2",
