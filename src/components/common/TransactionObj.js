@@ -7,7 +7,6 @@ import {
   asset,
   Text
 } from 'react-vr';
-import { DataReadout } from './DataReadout';
 import { Zeppelin, HotAirBalloon } from './index';
 
 class TransactionObj extends React.Component {
@@ -16,8 +15,7 @@ class TransactionObj extends React.Component {
   }
 
   render() {
-    const { x, z, volume, color, scale, model } = this.props.transaction;
-    const base = 5;
+    const { model } = this.props.transaction.display;
     return (
       <View>
         {
